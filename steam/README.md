@@ -8,8 +8,7 @@ Tagged versions will follow gentoo stabilization of the driver.
 For running it :
 
 ```
-docker run --rm \
---privileged \
+docker run --rm --privileged \
 -v /etc/localtime:/etc/localtime:ro \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v /dev/shm:/dev/shm \
@@ -19,7 +18,6 @@ docker run --rm \
 -v /etc/machine-id:/var/lib/dbus/machine-id:ro \
 -v /run/user/$UID/pulse:/run/user/$UID/pulse:ro \
 -e DISPLAY=$DISPLAY \
---group-add=27 \
 jsurloppe/steam:brewmaster-384.59
 ```
 

@@ -1,5 +1,4 @@
-# docker run --rm \
-# --privileged \
+# docker run --rm --privileged \
 # -v /etc/localtime:/etc/localtime:ro \
 # -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 # -v /dev/shm:/dev/shm \
@@ -9,7 +8,6 @@
 # -v /etc/machine-id:/var/lib/dbus/machine-id:ro \
 # -v /run/user/$UID/pulse:/run/user/$UID/pulse:ro \
 # -e DISPLAY=$DISPLAY \
-# --group-add=27 \
 # jsurloppe/steam:brewmaster-384.59
 
 # build from
@@ -20,9 +18,25 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN dpkg --add-architecture i386
 RUN apt-get update
 # base steamos package
-RUN apt-get install -yq libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 i965-va-driver:i386 libnvidia-encode1:i386 steamos-packages:i386 
+RUN apt-get install -yq \
+    libc6:i386 \
+    libgl1-mesa-dri:i386 \
+    libgl1-mesa-glx:i386 \
+    libgl1-nvidia-glx:i386 \
+    steamos-modeswitch-inhibitor:i386 \
+    steam:i386 \
+    nvidia-vdpau-driver:i386 \
+    libtxc-dxtn-s2tc0:i386 \
+    i965-va-driver:i386 \
+    libnvidia-encode1:i386 \
+    steamos-packages:i386
+
 # non-default-but-should-be
-RUN apt-get install -yq pulseaudio:i386 bluetooth sudo libasound2-plugins:amd64
+RUN apt-get install -yq \
+    pulseaudio:i386 \
+    bluetooth \
+    sudo \
+    libasound2-plugins:amd64
 
 RUN adduser --gecos "" --disabled-password steam
 RUN usermod -a -G audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
