@@ -36,7 +36,8 @@ RUN apt-get install -yq \
     pulseaudio:i386 \
     bluetooth \
     sudo \
-    libasound2-plugins:amd64
+    libasound2-plugins:amd64 \
+    python3
 
 RUN adduser --gecos "" --disabled-password steam
 RUN usermod -a -G audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
