@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM adoptopenjdk/openjdk11:alpine
 
 ARG EXPORTER_VERSION=0.14.0
 ENV EXPORTER_VERSION ${EXPORTER_VERSION}
