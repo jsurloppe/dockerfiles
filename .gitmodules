@@ -1,3 +1,0 @@
-[submodule "ccbv/django-cbv-inspector"]
-	path = ccbv/django-cbv-inspector
-	url = https://github.com/refreshoxford/django-cbv-inspector.git
